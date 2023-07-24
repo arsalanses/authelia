@@ -15,7 +15,7 @@ services:
       TZ: "Asia/Tehran"
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.heimdall.rule=Host(`heimdall.example.com`)'
+      - 'traefik.http.routers.heimdall.rule=Host(`heimdall.arsalanses.ir`)'
       - 'traefik.http.routers.heimdall.entryPoints=https'
       - 'traefik.http.routers.heimdall.tls=true'
       - 'traefik.http.routers.heimdall.middlewares=authelia-basic@docker'
