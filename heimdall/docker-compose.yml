@@ -1,0 +1,25 @@
+services:
+  heimdall:
+    container_name: heimdall
+    image: linuxserver/heimdall
+    restart: unless-stopped
+    networks:
+      net: {}
+    expose:
+      - 443
+    volumes:
+      - ${PWD}/data/heimdall/config:/config
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Asia/Tehran"
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.heimdall.rule=Host(`heimdall.example.com`)'
+      - 'traefik.http.routers.heimdall.entryPoints=https'
+      - 'traefik.http.routers.heimdall.tls=true'
+      - 'traefik.http.routers.heimdall.middlewares=authelia-basic@docker'
+
+networks:
+  net:
+    driver: bridge

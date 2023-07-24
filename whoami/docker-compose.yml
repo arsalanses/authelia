@@ -1,0 +1,36 @@
+services:
+  secure:
+    image: traefik/whoami
+    container_name: secure
+    restart: unless-stopped
+    networks:
+      - net
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.secure.rule=Host(`secure.example.com`)'
+      - 'traefik.http.routers.secure.entrypoints=https'
+      - 'traefik.http.routers.secure.tls=true'
+      - 'traefik.http.routers.secure.tls.options=default'
+      - 'traefik.http.routers.secure.middlewares=authelia@docker'
+    expose:
+      - 80
+
+  public:
+    image: traefik/whoami
+    container_name: public
+    restart: unless-stopped
+    networks:
+      - net
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.public.rule=Host(`public.example.com`)'
+      - 'traefik.http.routers.public.entrypoints=https'
+      - 'traefik.http.routers.public.tls=true'
+      - 'traefik.http.routers.public.tls.options=default'
+      - 'traefik.http.routers.public.middlewares=authelia@docker'
+    expose:
+      - 80
+
+networks:
+  net:
+    driver: bridge
