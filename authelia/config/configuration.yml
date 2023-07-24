@@ -30,11 +30,11 @@ access_control:
   default_policy: deny
   rules:
     # Rules applied to everyone
-    - domain: public.arsalanses.ir
+    - domain: whoami.arsalanses.ir
       policy: bypass
     - domain: traefik-auth.arsalanses.ir
       policy: one_factor
-    - domain: secure.arsalanses.ir
+    - domain: whoamis.arsalanses.ir
       policy: two_factor
 
 session:
