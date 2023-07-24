@@ -4,7 +4,7 @@
 
 # This secret can also be set using the env variables AUTHELIA_JWT_SECRET_FILE
 jwt_secret: a_very_important_secret
-default_redirection_url: https://public.arsalanses.ir
+default_redirection_url: https://whoami.arsalanses.ir
 
 server:
   host: 0.0.0.0
