@@ -4,7 +4,7 @@ services:
     container_name: secure
     restart: unless-stopped
     networks:
-      - net
+      - web
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.secure.rule=Host(`secure.example.com`)'
@@ -20,7 +20,7 @@ services:
     container_name: public
     restart: unless-stopped
     networks:
-      - net
+      - web
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.public.rule=Host(`public.example.com`)'
@@ -32,5 +32,5 @@ services:
       - 80
 
 networks:
-  net:
-    driver: bridge
+  web:
+    external: true

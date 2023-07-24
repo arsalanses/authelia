@@ -4,7 +4,7 @@ services:
     image: linuxserver/nextcloud
     restart: unless-stopped
     networks:
-      net: {}
+      web: {}
     expose:
       - 443
     volumes:
@@ -22,5 +22,5 @@ services:
       - 'traefik.http.routers.nextcloud.middlewares=authelia@docker'
 
 networks:
-  net:
-    driver: bridge
+  web:
+    external: true

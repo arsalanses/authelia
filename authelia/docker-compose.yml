@@ -4,7 +4,7 @@ services:
     image: authelia/authelia
     restart: unless-stopped
     networks:
-      net: {}
+      web: {}
     expose:
       - 9091
     volumes:
@@ -26,5 +26,5 @@ services:
       - 'traefik.http.middlewares.authelia-basic.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
 
 networks:
-  net:
-    driver: bridge
+  web:
+    external: true
