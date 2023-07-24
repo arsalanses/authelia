@@ -1,0 +1,17 @@
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
+    networks:
+      - web
+    expose:
+      - 6379
+    environment:
+      - TZ=Asia/Tehran
+
+networks:
+  web:
+    external: true
