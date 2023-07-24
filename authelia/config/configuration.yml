@@ -14,7 +14,9 @@ log:
   level: debug
 
 totp:
-  issuer: authelia.com
+  issuer: auth.arsalanses.ir
+  period: 30
+  skew: 1
 
 # duo_api:
 #  hostname: api-123456789.example.com
@@ -25,6 +27,13 @@ totp:
 authentication_backend:
   file:
     path: /config/users_database.yml
+    # customize passwords based on https://docs.authelia.com/configuration/authentication/file.html
+    # password:
+    #   algorithm: argon2id
+    #   iterations: 1
+    #   salt_length: 16
+    #   parallelism: 8
+    #   memory: 1024 # blocks this much of the RAM. Tune this.
 
 access_control:
   default_policy: deny
@@ -36,6 +45,10 @@ access_control:
       policy: one_factor
     - domain: whoamis.arsalanses.ir
       policy: two_factor
+    - domain: heimdall.arsalanses.ir
+      policy: one_factor
+    - domain: nextcloud.arsalanses.ir
+      policy: one_factor
 
 session:
   name: authelia_session
@@ -57,5 +70,13 @@ storage:
     path: /config/db.sqlite3
 
 notifier:
+  # smtp:
+  #   username: SMTP_USERNAME
+  #   # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+  #   # password: # use docker secret file instead AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+  #   host: SMTP_HOST
+  #   port: 587 #465
+  #   sender: batman@example.com # customize for your setup
+
   filesystem:
     filename: /config/notification.txt
