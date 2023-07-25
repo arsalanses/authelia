@@ -22,7 +22,7 @@ services:
       - TZ=Asia/Tehran
       - LLDAP_JWT_SECRET=REPLACE_WITH_RANDOM
       - LLDAP_LDAP_USER_PASS=REPLACE_WITH_PASSWORD
-      - LLDAP_LDAP_BASE_DN=dc=example,dc=com
+      - LLDAP_LDAP_BASE_DN=dc=arsalanses,dc=ir
       # If using LDAPS, set enabled true and configure cert and key path
       # - LLDAP_LDAPS_OPTIONS__ENABLED=true
       # - LLDAP_LDAPS_OPTIONS__CERT_FILE=/path/to/certfile.crt

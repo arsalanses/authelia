@@ -55,7 +55,7 @@ authentication_backend:
     display_name_attribute: displayName
     # The username and password of the admin or service user.
     user: UID=authelia,OU=people,DC=arsalanses,DC=ir
-    password: "SUPER_COMPLEX_PASSWORD"
+    password: "REPLACE_WITH_PASSWORD"
 
 access_control:
   # deny
