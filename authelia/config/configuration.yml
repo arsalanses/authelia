@@ -92,6 +92,22 @@ identity_providers:
         - email
         - groups
       userinfo_signing_algorithm: none
+      issuer_private_key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIICXAIBAAKBgQCb1h5UyQjTWXykCjk4yiWCM3GqrVSlweRCdJoC8Ta8HHbgXKwi
+        BVqXma1YAuIkl5plcKJKHT7NzZyRI2bLu3+W+La9GlzLkWrGXzhT1r+WkYjmZUmq
+        xqx521R8a6FyNxB59LkV+ef0xCeGfXLsYfxHaNhntDxt91deI8qW9tTGpQIDAQAB
+        AoGAYL6nCd/ceMk/Vd968sScUJ57XIhK2rTqbk9RJa52WoYZTuR5gI1uVltzgAYa
+        OrlbgspQFk7dpIqXPouJz8VRSYEvYkd3HzEyz5cCkPYVnumYbQHIyh7wmbyks+Oi
+        sRFb/fPz7/UHA3ynJ7h4LpZtSciQ6uk6HRdwDlDjK2eQyAECQQDeBKnbuv1FeMuv
+        ssff2mTa5+67grEuu17Ftz4RatOkvzFSXUoEE0YTvLhdUmL4Q8rT+hdepzQ3jNMU
+        f850cZOlAkEAs7BA+5mSV/aOD2MQ9mnWeG3o3OU9kzFrVqi6xSMylhx8Hc9iC7Vl
+        FhseqqeFSBJCyIWmIeFyKrluJd8SygP3AQJAaFLSqfBckGdpdp7QcqyBladEM5H+
+        xdG/f7JSFQcYeiJo/6XcYLvZwu57x0YuQTBBv4eVsaFp1Ox0Rv6jOW4hDQJAJD/J
+        TDh16mLl07rTgDJnvtHFaVKhsmEE222ciAqKuPe0Hjto9x2379a2wAydeaWdbWBw
+        3GLjqjTQQLmYy8IzAQJBAKqeT6ls591EfhPklF+JRfFnMfJoZN+C05TCEbPM4omd
+        wE/JWV7sG96PNI66JXcfVPxMSugLuYyYYhN8dY7U8O4=
+        -----END RSA PRIVATE KEY-----
 
 session:
   name: authelia_session
