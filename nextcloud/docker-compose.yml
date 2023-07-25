@@ -1,14 +1,14 @@
 services:
   nextcloud:
-    container_name: nextcloud
     image: linuxserver/nextcloud
+    container_name: nextcloud
     restart: unless-stopped
     networks:
       web: {}
     expose:
       - 443
     volumes:
-      - ${PWD}/data/nextcloud/config:/config
+      - ${PWD}/config:/config
       - ${PWD}/data/nextcloud/data:/data
     environment:
       PUID: "1000"
@@ -19,7 +19,7 @@ services:
       - 'traefik.http.routers.nextcloud.rule=Host(`nextcloud.arsalanses.ir`)'
       - 'traefik.http.routers.nextcloud.entryPoints=https'
       - 'traefik.http.routers.nextcloud.tls=true'
-      - 'traefik.http.routers.nextcloud.middlewares=authelia@docker'
+      # - 'traefik.http.routers.nextcloud.middlewares=authelia@docker'
 
 networks:
   web:

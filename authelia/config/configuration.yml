@@ -25,18 +25,41 @@ totp:
 #  secret_key: 1234567890abcdefghifjkl
 
 authentication_backend:
-  file:
-    path: /config/users_database.yml
-    # customize passwords based on https://docs.authelia.com/configuration/authentication/file.html
-    # password:
-    #   algorithm: argon2id
-    #   iterations: 1
-    #   salt_length: 16
-    #   parallelism: 8
-    #   memory: 1024 # blocks this much of the RAM. Tune this.
+  # file:
+  #   path: /config/users_database.yml
+  #   # customize passwords based on https://docs.authelia.com/configuration/authentication/file.html
+  #   password:
+  #     algorithm: argon2id
+  #     iterations: 1
+  #     salt_length: 16
+  #     parallelism: 8
+  #     memory: 1024 # blocks this much of the RAM. Tune this.
+  ldap:
+    implementation: custom
+    url: ldap://lldap:3890
+    timeout: 5s
+    start_tls: false
+    # tls:
+    #  skip_verify: false
+    #  minimum_version: TLS1.2
+    base_dn: dc=arsalanses,DC=ir
+    username_attribute: uid
+    additional_users_dn: OU=people
+    # To allow sign in both with username and email, one can use a filter like
+    # (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
+    users_filter: (&({username_attribute}={input})(objectClass=person))
+    additional_groups_dn: OU=groups
+    groups_filter: (member={dn})
+    group_name_attribute: cn
+    mail_attribute: mail
+    display_name_attribute: displayName
+    # The username and password of the admin or service user.
+    user: UID=authelia,OU=people,DC=arsalanses,DC=ir
+    password: "SUPER_COMPLEX_PASSWORD"
 
 access_control:
-  default_policy: deny
+  # deny
+  default_policy: one_factor
   rules:
     # Rules applied to everyone
     - domain: whoami.arsalanses.ir
@@ -49,6 +72,25 @@ access_control:
       policy: one_factor
     - domain: nextcloud.arsalanses.ir
       policy: one_factor
+
+# identity_providers:
+#   oidc:
+#     ## The other portions of the mandatory OpenID Connect 1.0 configuration go here.
+#     ## See: https://www.authelia.com/c/oidc
+#     clients:
+#     - id: nextcloud
+#       description: NextCloud
+#       secret: '$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng'  # The digest of 'insecure_secret'.
+#       public: false
+#       authorization_policy: two_factor
+#       redirect_uris:
+#         - https://nextcloud.arsalanses.ir/apps/oidc_login/oidc
+#       scopes:
+#         - openid
+#         - profile
+#         - email
+#         - groups
+#       userinfo_signing_algorithm: none
 
 session:
   name: authelia_session
