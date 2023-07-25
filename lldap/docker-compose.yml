@@ -37,6 +37,7 @@ services:
       - 'traefik.http.routers.lldap.tls=true'
       - 'traefik.http.routers.lldap.tls.options=default'
       - 'traefik.http.routers.lldap.middlewares=authelia-basic@docker'
+      - 'traefik.http.services.lldap.loadbalancer.server.port=17170'
 
 volumes:
   lldap_data:
