@@ -112,8 +112,7 @@ identity_providers:
       public: false
       authorization_policy: two_factor
       redirect_uris:
-        - https://auth.arsalanses.ir/index.php/apps/sociallogin/custom_oidc/Authelia
-        - https://nextcloud.arsalanses.ir/apps/oidc_login/oidc
+        - http://nextcloud.arsalanses.ir/apps/sociallogin/custom_oidc/Authelia
       scopes:
         - openid
         - profile
