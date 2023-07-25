@@ -70,8 +70,8 @@ access_control:
       policy: two_factor
     # - domain: heimdall.arsalanses.ir
     #   policy: one_factor
-    - domain: nextcloud.arsalanses.ir
-      policy: one_factor
+    # - domain: nextcloud.arsalanses.ir
+    #   policy: one_factor
 
 # identity_providers:
 #   oidc:
