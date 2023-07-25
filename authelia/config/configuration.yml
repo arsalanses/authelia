@@ -79,19 +79,31 @@ identity_providers:
     ## See: https://www.authelia.com/c/oidc
     issuer_private_key: |
       -----BEGIN RSA PRIVATE KEY-----
-      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
+      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
       -----END RSA PRIVATE KEY-----
     clients:
     - id: nextcloud
