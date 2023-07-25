@@ -12,7 +12,7 @@ services:
       - '--global.checkNewVersion=false'
       - '--log=true'
       - '--log.level=DEBUG'
-      - '--log.filepath=/config/traefik.log'
+      # - '--log.filepath=/config/traefik.log'
       - '--providers.docker=true'
       - '--providers.docker.exposedByDefault=false'
       - '--entryPoints.http=true'
