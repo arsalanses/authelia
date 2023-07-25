@@ -54,7 +54,7 @@ authentication_backend:
     mail_attribute: mail
     display_name_attribute: displayName
     # The username and password of the admin or service user.
-    user: UID=authelia,OU=people,DC=arsalanses,DC=ir
+    user: UID=admin,OU=people,DC=arsalanses,DC=ir
     password: "REPLACE_WITH_PASSWORD"
 
 access_control:
@@ -68,8 +68,8 @@ access_control:
       policy: one_factor
     - domain: whoamis.arsalanses.ir
       policy: two_factor
-    - domain: heimdall.arsalanses.ir
-      policy: one_factor
+    # - domain: heimdall.arsalanses.ir
+    #   policy: one_factor
     - domain: nextcloud.arsalanses.ir
       policy: one_factor
 
